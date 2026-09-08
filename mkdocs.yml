@@ -1,0 +1,59 @@
+site_name: Beter Benutten Scan documentatie
+site_url: https://beterbenutten.nl/scan
+nav:
+  - Start: algemeen/index.md
+  - BeterBenuttenScan:
+      - Intro: beterbenuttenscan/index.md
+      - Gebouwtypes:
+          - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
+          - Hoekwoningen: beterbenuttenscan/gebouwtypes/hoekwoningen.md
+          - Garageboxen: beterbenuttenscan/gebouwtypes/garageboxen.md
+      - Filteren: beterbenuttenscan/filteren.md
+      - Wegen: beterbenuttenscan/wegen/index.md
+      - Analyseren:
+          - BeterBenuttenScan: beterbenuttenscan/analyseren/beterbenuttenscan.md
+          - Mobiliteit: beterbenuttenscan/analyseren/mobiliteit.md
+          - Voorzieningen: beterbenuttenscan/analyseren/voorzieningen.md
+          - Regelgeving: beterbenuttenscan/analyseren/regelgeving.md
+          - Verstedelijking: beterbenuttenscan/analyseren/verstedelijking.md
+          - Ondergrond: beterbenuttenscan/analyseren/ondergrond.md
+          - Eigendomsinformatie: beterbenuttenscan/analyseren/eigendomsinformatie.md
+          - Energietransitie: beterbenuttenscan/analyseren/energietransitie.md
+          - Street view: beterbenuttenscan/analyseren/street-view.md
+      - Exporteren: beterbenuttenscan/exporteren.md
+      - Voorbeeld user story: beterbenuttenscan/voorbeeld-user-story.md
+  - PIM platform:
+      - Intro: pim-info/index.md
+      - Uitlegfilmpjes: pim-info/uitlegfilmpjes.md
+      - Nieuwe gebruiker toevoegen: pim-info/nieuwe-gebruiker.md
+      - Resultaten exporteren: pim-info/resultaten-exporteren.md
+  - Literatuur:
+      - Literatuurbibliotheek: literatuur/literatuurbibliotheek.md
+  - Meedoen?:
+      - Contactinformatie: meedoen/contactinformatie.md
+      - Snelle volger programma: meedoen/snelle-volger-programma.md
+      - RVO expertteam woningbouw:
+          - Het team: meedoen/rvo-expertteam-woningbouw/het-team.md
+          - Workshopmenu: meedoen/rvo-expertteam-woningbouw/workshopmenu.md
+  - Over ons: over-ons/index.md
+theme:
+  name: material
+  palette:
+    primary: 'custom'
+    accent: 'red'
+  font:
+    text: Arial
+    code: Consolas
+  custom_dir: overrides
+  logo: assets/img.png
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.annotate
+    - content.code.copy
+    - content.code.expand
+    - content.tabs.link
+extra_css:
+  - stylesheets/bzk.css

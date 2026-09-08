@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <header class="md-header md-header--banner" data-md-component="header">
+    <div class="md-header__banner">
+      <img src="{{ config.theme.logo | url }}" alt="{{ config.site_name }}" class="md-header__banner-logo" />
+    </div>
+    {{ super() }}
+  </header>
+{% endblock %}
