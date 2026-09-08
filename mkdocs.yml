@@ -1,13 +1,21 @@
 site_name: Beter Benutten Scan documentatie
 site_url: https://beterbenutten.nl/scan
 nav:
-  - Start: algemeen/index.md
+  - Start:
+      - Overzicht: algemeen/index.md
+      - Consortium: algemeen/consortium.md
   - BeterBenuttenScan:
       - Intro: beterbenuttenscan/index.md
       - Gebouwtypes:
-          - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
-          - Hoekwoningen: beterbenuttenscan/gebouwtypes/hoekwoningen.md
-          - Garageboxen: beterbenuttenscan/gebouwtypes/garageboxen.md
+          - Appartementencomplexen:
+              - Definitie: beterbenuttenscan/gebouwtypes/appartementencomplexen/definitie.md
+              - Criteria: beterbenuttenscan/gebouwtypes/appartementencomplexen/criteria.md
+          - Hoekwoningen:
+              - Definitie: beterbenuttenscan/gebouwtypes/hoekwoningen/definitie.md
+              - Criteria: beterbenuttenscan/gebouwtypes/hoekwoningen/criteria.md
+          - Garageboxen:
+              - Definitie: beterbenuttenscan/gebouwtypes/garageboxen/definitie.md
+              - Criteria: beterbenuttenscan/gebouwtypes/garageboxen/criteria.md
       - Filteren: beterbenuttenscan/filteren.md
       - Wegen: beterbenuttenscan/wegen/index.md
       - Analyseren:

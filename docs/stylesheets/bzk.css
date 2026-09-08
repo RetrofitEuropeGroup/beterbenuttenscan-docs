@@ -90,3 +90,30 @@
 .literatuur-tegel dd {
   margin: 0;
 }
+
+.consortium-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.consortium-tegel {
+  border: 1px solid #d8dee4;
+  border-top: 5px solid #164273;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.consortium-tegel h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.consortium-type {
+  color: #666;
+  font-weight: 700;
+}
