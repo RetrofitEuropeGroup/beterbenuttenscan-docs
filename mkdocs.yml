@@ -1,5 +1,4 @@
 site_name: Beter Benutten Scan documentatie
-site_url: https://retrofiteuropegroup.github.io/beterbenuttenscan-docs/
 nav:
   - Start:
       - Overzicht: algemeen/index.md
