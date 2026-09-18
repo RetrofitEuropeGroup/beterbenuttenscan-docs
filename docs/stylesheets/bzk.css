@@ -3,6 +3,8 @@
   --md-primary-fg-color--light: #164273;
   --md-primary-fg-color--dark: #0f3056;
   --md-accent-fg-color: #a90061;
+  --md-grid-width: 85rem;
+  --md-content-width: 54rem;
 }
 
 .md-header,
@@ -10,24 +12,16 @@
   background: #164273;
 }
 
-.md-header--banner {
-  display: block;
+.md-grid {
+  max-width: 85rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.md-header__banner {
-  background: #fff;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 104px;
-  margin: 0;
-  padding: 0 16px;
-}
-
-.md-header__banner-logo {
-  display: block;
-  max-height: 88px;
-  width: auto;
+.md-content {
+  max-width: 54rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .md-header .md-logo {
@@ -52,6 +46,26 @@
 .md-content .md-button--primary:hover {
   background: #900052;
   border-color: #900052;
+}
+
+.md-content details {
+  margin: 1rem 0;
+  border: 1px solid #d8dee4;
+  border-left: 4px solid #164273;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.md-content details summary {
+  cursor: pointer;
+  padding: 0.9rem 1rem;
+  color: #164273;
+  font-weight: 700;
+}
+
+.md-content details p {
+  margin: 0;
+  padding: 0 1rem 1rem;
 }
 
 .literatuur-grid {
@@ -91,29 +105,143 @@
   margin: 0;
 }
 
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.expert-kaart {
+  overflow: hidden;
+  border: 1px solid #d8dee4;
+  border-top: 4px solid #164273;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.expert-afbeelding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 1rem;
+  background: #f4f7fa;
+  border-bottom: 1px dashed #c7d0da;
+}
+
+.expert-afbeelding img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.expert-inhoud {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.expert-inhoud h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.expert-inhoud p:last-child {
+  margin-bottom: 0;
+}
+
 .consortium-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin: 1.5rem 0;
 }
 
 .consortium-tegel {
+  display: flex;
+  flex-direction: row;
   border: 1px solid #d8dee4;
-  border-top: 5px solid #164273;
+  border-left: 5px solid #164273;
   border-radius: 4px;
-  padding: 1rem 1.25rem;
+  overflow: hidden;
   background: #fff;
   box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
 }
 
-.consortium-tegel h2 {
+.consortium-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 190px;
+  min-height: 145px;
+  padding: 1rem 1.25rem;
+  background: #f4f7fa;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.consortium-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 82px;
+  width: auto;
+  object-fit: contain;
+}
+
+.consortium-logo--placeholder {
+  border-right: 1px dashed #c7d0da;
+}
+
+.consortium-inhoud {
+  flex: 1;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.consortium-inhoud h2 {
   margin-top: 0;
   color: #164273;
   font-size: 1.1rem;
 }
 
 .consortium-type {
+  margin: 0 0 0.35rem;
   color: #666;
   font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.consortium-gemeenten {
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 600px) {
+  .experts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .consortium-tegel {
+    flex-direction: column;
+    border-left: 1px solid #d8dee4;
+    border-top: 4px solid #164273;
+  }
+
+  .consortium-logo {
+    flex-basis: auto;
+    min-height: 100px;
+  }
+
+  .consortium-logo--placeholder {
+    border-right: 0;
+    border-bottom: 1px dashed #c7d0da;
+  }
 }
