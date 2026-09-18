@@ -154,6 +154,44 @@
   margin-bottom: 0;
 }
 
+.workshop-voorbeelden-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.workshop-kaart {
+  overflow: hidden;
+  border: 1px solid #d8dee4;
+  border-top: 4px solid #164273;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.workshop-kaart > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px dashed #c7d0da;
+}
+
+.workshop-kaart-inhoud {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.workshop-kaart-inhoud h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.workshop-kaart-inhoud p:last-child {
+  margin-bottom: 0;
+}
+
 .consortium-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -226,6 +264,10 @@
 
 @media screen and (max-width: 600px) {
   .experts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workshop-voorbeelden-grid {
     grid-template-columns: 1fr;
   }
 
