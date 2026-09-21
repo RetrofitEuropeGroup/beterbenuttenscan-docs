@@ -1,5 +1,7 @@
 # Appartementencomplexen
 
+## Definitie
+
 De laag appartementencomplexen bevat geaggregeerde BAG Pand objecten en kan gebruikt worden voor de verdichtingsvormen optoppen, aanplakken en uitplinten. De laag is geaggregeerd omdat de BAG Pand objecten niet altijd overeenkomen met de manier waarop wij een appartementencomplex zien.
 
 Als we bijv. de [definitie opzoeken van objecttype Pand in de BAG](https://imbag.github.io/praktijkhandleiding/beslisboomvragen_pand/pand-07):
@@ -13,7 +15,8 @@ De manier van aggregatie is:
 1. We selecteren eerst panden met een woonfunctie en groeperen de panden die vlak naast elkaar staan (binnen 2,5 meter) tot één aaneengesloten geheel. 
 2. Vervolgens bepalen we of deze groep een appartementencomplex is op basis van het aantal woningen: een losstaand gebouw moet meer dan drie woningen bevatten, en een groep van meerdere panden moet gemiddeld meer dan 1,2 woningen per pand hebben.
 
-### Code
+<details>
+<summary>Toon SQL-query</summary>
 
 Wij gebruiken de volgende SQL query om de appartementencomplexen te selecteren:
 
@@ -70,3 +73,119 @@ where
 	(a.a_p > 1 and (a.a_vb_wf/a.a_p) > 1.2) 
     AND a.cid IS NOT NULL
 ```
+
+</details>
+
+## Criteria
+
+### Fundering
+De funderingsscore combineert het oorspronkelijk bouwjaar en de kwetsbaarheid van het bodemtype.  
+Gebouwen van vóór 1970 hebben een hoger risico (vaker fundering op staal of houten palen). Bodemtypes **klei** en **veen** verhogen het risico op funderingsrot of verzakking. Meer risico betekent een lagere score.
+
+### Gebouwtype
+
+
+### Daktype
+De daktypescore kijkt naar het aantal dakvlakken en de hellingshoeken daarvan.  
+Hoe minder dakvlakken en hoe flauwer de helling, hoe hoger de potentie voor optoppen en dus hoe hoger de score.
+
+### Dakoppervlakte
+De score voor plat dakoppervlakte neemt toe naarmate het platte dak groter is.  
+Vanaf circa **300 m²** plat dakoppervlakte is optoppen doorgaans goed inpasbaar.
+
+### Vrij dakpercentage
+Dit criterium geeft aan welk deel van het dak vrij en bruikbaar is voor toevoeging van bouwvolume. Een hoger vrij dakpercentage betekent meer effectieve ruimte en een hogere score. We kijken hiervoor met beeldherkenning naar de aanwezigheid van obstakels zoals dakkapellen, schoorstenen, zonnepanelen en installaties.
+
+### Beschikbare bouwhoogte
+Dit is de vrijehoogtescore: hoeveel verticale ruimte is er nog beschikbaar voor optoppen?  
+De score is gebaseerd op het verschil tussen de maximale bouwhoogte uit het bestemmingsplan en de huidige bouwhoogte, en staat gelijk aan het **percentage dakoppervlakte met meer dan 3 meter vrije ruimte**.
+
+### Bestaande bouwhoogte
+Hoe hoger het bestaande gebouw, hoe lager de score.  
+Bij grotere hoogtes is de constructieve marge vaak kleiner en gelden strengere bouwkundige voorschriften. De score verloopt lineair tussen **0 en 30 meter** (hoger is slechter).
+
+### Vrije ruimte perceel
+Dit criterium beoordeelt hoeveel horizontale ruimte rondom het complex beschikbaar is. Dat zegt iets over:
+
+- ruimte voor een nieuwe ontsluiting (trappenhuis/lift)
+- mogelijkheid voor extra parkeerplaatsen op eigen terrein
+- kans op extra schaduwval op omliggende bebouwing
+- ruimte voor bouwplaatsinrichting
+
+De score verloopt lineair tussen **1000 en 5000 m²**; meer ruimte is beter.
+
+### Energielabel
+De energielabelscore geeft aan hoeveel verduurzamingspotentie er nog in een complex zit bij een optopproject. Hoe beter het huidige label, hoe lager de score: bij een al energiezuinig gebouw is de extra winst van een gecombineerd renovatie- en optoptraject doorgaans kleiner.
+
+Voor een complex met meerdere panden bepalen we eerst één representatief energielabel op complexniveau. Daarbij gebruiken we de meest voorkomende energieklasse binnen het complex, zodat incidentele uitzonderingen minder zwaar wegen dan het dominante beeld. Als er geen bruikbaar label beschikbaar is, wordt het bouwjaar meegewogen als vangnet om oudere complexen niet ten onrechte gunstig te laten scoren.
+
+Technisch wordt in FME per `complexid` met een `StatisticsCalculator` de **mode** van `energieklasse` berekend (`energieklasse.mode`) en via `FeatureJoiner` teruggezet op het complex. Daarna zet de `AttributeManager` dit om naar `energielabel` en rekent `energielabel_score` uit. Met \(L=\text{energielabel}\) en \(Y=\text{oorspronkelijkbouwjaar.mean}\) is de scoring:
+
+\[
+\mathrm{energielabel\_score}(L,Y)=
+\begin{cases}
+0   & \text{als } L=\mathrm{A}\\
+0.2 & \text{als } L=\mathrm{B}\\
+0.4 & \text{als } L=\mathrm{C}\\
+0.6 & \text{als } L=\mathrm{D}\\
+0.8 & \text{als } L=\mathrm{E}\\
+1   & \text{als } L\in\{\mathrm{F},\mathrm{G}\}\\
+1   & \text{als } L\text{ ontbreekt en }Y\le 1992\\
+0   & \text{anders}
+\end{cases}
+\]
+
+In de eindoutput blijven alleen `energielabel_score`, `complexid` en `energielabel` over.
+
+### Eigendomssituatie
+Dit is de eigenarenscore: hoe meer belangen, hoe complexer de besluitvorming en onderhandelingen.  
+De score verloopt lineair tussen **0 en 10 eigenaren**, waarbij meer eigenaren slechter scoren.
+
+### Plintfunctie
+De plintfunctie wordt als contextcriterium meegenomen om de huidige functiemix te begrijpen. Het helpt bij de ruimtelijke en programmatische afweging rond optoppen.
+
+
+## Attributen
+
+| Naam | Voorbeeldwaarde | Uitleg |
+|---|---:|---|
+| Bouwjaar | 1984 | Jaar waarin het gebouw is opgeleverd/gebouwd. |
+| Energielabel | C | Energieprestatieklasse van het gebouw. |
+| Monumentstatus | No | Geeft aan of het gebouw een monument is. |
+| Erfpacht |  | Type of status van erfpacht op de grond. |
+| Einddatum Erfpacht |  | Einddatum van het erfpachtrecht (indien van toepassing). |
+| Provincie | Voorbeeldland | Provincie waarin het object ligt. |
+| Gemeente | Voorbeeldstad | Gemeente waarin het object ligt. |
+| Wijk | Wijk 03 Centrum | Wijkindeling van de locatie. |
+| Buurt | Jan de Vriesplein en omgeving | Buurtindeling van de locatie. |
+| Gebouwtype | Appartement | Type gebouw/gebruiksfunctie op hoofdniveau. |
+| Gebouwhoogte | 10.2 | Hoogte van het gebouw (meestal in meters). |
+| Daktype | schuin/speciaal | Type dakvorm van het gebouw. |
+| Plat dak oppervlakte | 892 | Oppervlakte van platte dakdelen (meestal m²). |
+| Percentage vrij dak | 96 | Aandeel van het dak dat vrij/bruikbaar is (in %). |
+| Vrije ruimte perceel | 1580 | Beschikbare onbebouwde ruimte op het perceel (meestal m²). |
+| Bodemtype | Niet indeelbaar | Classificatie van de ondergrond/bodem. |
+| Deelautos | 8 | Aantal deelauto’s in de omgeving of gekoppeld aan het object. |
+| Aantal woningen | 32 | Totaal aantal woningen in het gebouw/complex. |
+| Oppervlakte wonen | 1991 | Totale vloeroppervlakte met woonfunctie (meestal m²). |
+| Percentage wonen | 99 | Aandeel woonfunctie in de totale gebruiksoppervlakte (in %). |
+| Oppervlakte winkels | 11 | Totale vloeroppervlakte met winkelfunctie (m²). |
+| Percentage winkels | 1 | Aandeel winkelfunctie in de totale gebruiksoppervlakte (in %). |
+| Oppervlakte zorg | 0 | Totale vloeroppervlakte met zorgfunctie (m²). |
+| Percentage zorg | 0 | Aandeel zorgfunctie in de totale gebruiksoppervlakte (in %). |
+| Oppervlakte kantoor | 0 | Totale vloeroppervlakte met kantoorfunctie (m²). |
+| Percentage kantoor | 0 | Aandeel kantoorfunctie in de totale gebruiksoppervlakte (in %). |
+| Oppervlakte overig | 0 | Totale vloeroppervlakte van overige functies (m²). |
+| Percentage overige functies | 0 | Aandeel overige functies in de totale gebruiksoppervlakte (in %). |
+| Naam vve | Vereniging van Eigenaars Gebouw Jan de Vriesplein 12-34 te Voorbeeldstad | Officiële naam van de VvE die het gebouw beheert. |
+| Aantal stakeholders woningen | 32 | Aantal betrokken eigenaren/partijen voor de woningen. |
+| Particuliere koop aantal | 25 | Aantal woningen in particulier eigendom. |
+| Particuliere koop percentage | 1 | Aandeel particulier eigendom binnen woningvoorraad (bronafhankelijk: % of fractie). |
+| Woningcorporatie aantal | 0 | Aantal woningen in eigendom van woningcorporaties. |
+| Woningcorporatie percentage | 0 | Aandeel corporatiebezit binnen woningvoorraad. |
+| Overige verhuur aantal | 5 | Aantal woningen in overige verhuurcategorieën. |
+| Overige verhuur percentage | 0 | Aandeel overige verhuur binnen woningvoorraad. |
+| Overige onbekend aantal | 2 | Aantal woningen met onbekende/overige eigendomscategorie. |
+| Overig onbekend percentage | 0 | Aandeel onbekende/overige eigendomscategorie. |
+| Complex ID | 90231 | Unieke identificatie van het complex in de dataset. |
+| Aantal stakeholders totaal | 32 | Totaal aantal stakeholders over alle categorieën. |

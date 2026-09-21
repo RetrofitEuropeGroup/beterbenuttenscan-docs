@@ -1,3 +1,0 @@
-# Appartementencomplexen
-
-Criteria voor appartementencomplexen.

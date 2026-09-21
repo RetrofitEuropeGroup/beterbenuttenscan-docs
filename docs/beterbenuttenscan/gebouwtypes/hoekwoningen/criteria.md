@@ -1,3 +1,0 @@
-# Hoekwoningen
-
-Criteria voor hoekwoningen.

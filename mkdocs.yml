@@ -1,16 +1,14 @@
 site_name: Beter Benutten Scan documentatie
 site_url: https://retrofiteuropegroup.github.io/beterbenuttenscan-docs/
+repo_url: https://github.com/RetrofitEuropeGroup/beterbenuttenscan-docs
+repo_name: RetrofitEuropeGroup/beterbenuttenscan-docs
 nav:
   - BeterBenuttenScan:
       - beterbenuttenscan/index.md
       - Gebouwtypes:
           - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
-          - Hoekwoningen:
-              - Definitie: beterbenuttenscan/gebouwtypes/hoekwoningen/definitie.md
-              - Criteria: beterbenuttenscan/gebouwtypes/hoekwoningen/criteria.md
-          - Garageboxen:
-              - Definitie: beterbenuttenscan/gebouwtypes/garageboxen/definitie.md
-              - Criteria: beterbenuttenscan/gebouwtypes/garageboxen/criteria.md
+          - Hoekwoningen: beterbenuttenscan/gebouwtypes/hoekwoningen.md
+          - Garageboxen: beterbenuttenscan/gebouwtypes/garageboxen.md
       - Filteren: beterbenuttenscan/filteren.md
       - Wegen: beterbenuttenscan/wegen/index.md
       - Analyseren:
@@ -35,6 +33,18 @@ nav:
   - Over ons: over-ons/index.md
 markdown_extensions:
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: datetime
+      locale: nl
+      timezone: Europe/Amsterdam
+      fallback_to_build_date: false
+  - git-committers:
+      repository: RetrofitEuropeGroup/beterbenuttenscan-docs
+      branch: main
 theme:
   name: material
   palette:
@@ -58,3 +68,6 @@ theme:
     - content.tabs.link
 extra_css:
   - stylesheets/bzk.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

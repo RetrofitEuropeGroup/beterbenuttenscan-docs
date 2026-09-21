@@ -2,10 +2,10 @@
 
 ## Lokaal uitvoeren
 
-Installeer MkDocs Material en start de lokale server:
+Installeer de documentatie-dependencies en start de lokale server:
 
 ```shell
-pip install mkdocs-material
+pip install -r requirements.txt
 mkdocs serve
 ```
 

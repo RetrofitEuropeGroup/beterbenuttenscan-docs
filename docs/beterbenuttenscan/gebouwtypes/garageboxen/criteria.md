@@ -1,3 +1,0 @@
-# Garageboxen
-
-Criteria voor garageboxen.
