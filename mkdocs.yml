@@ -8,7 +8,6 @@ nav:
       - Gebouwtypes:
           - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
           - Hoekwoningen: beterbenuttenscan/gebouwtypes/hoekwoningen.md
-          - Garageboxen: beterbenuttenscan/gebouwtypes/garageboxen.md
       - Filteren: beterbenuttenscan/filteren.md
       - Wegen: beterbenuttenscan/wegen/index.md
       - Analyseren:
