@@ -4,9 +4,7 @@ nav:
   - BeterBenuttenScan:
       - beterbenuttenscan/index.md
       - Gebouwtypes:
-          - Appartementencomplexen:
-              - Definitie: beterbenuttenscan/gebouwtypes/appartementencomplexen/definitie.md
-              - Criteria: beterbenuttenscan/gebouwtypes/appartementencomplexen/criteria.md
+          - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
           - Hoekwoningen:
               - Definitie: beterbenuttenscan/gebouwtypes/hoekwoningen/definitie.md
               - Criteria: beterbenuttenscan/gebouwtypes/hoekwoningen/criteria.md
@@ -28,16 +26,15 @@ nav:
       - Exporteren: beterbenuttenscan/exporteren.md
       - Voorbeeld user story: beterbenuttenscan/voorbeeld-user-story.md
   - PIM platform:
-      - Intro: pim-info/index.md
-      - Uitlegfilmpjes: pim-info/uitlegfilmpjes.md
-      - Nieuwe gebruiker toevoegen: pim-info/nieuwe-gebruiker.md
-      - Resultaten exporteren: pim-info/resultaten-exporteren.md
+      - pim-info/index.md
   - Workshops:
       - workshops/ondersteuning.md
   - Literatuur:
       - Literatuurbibliotheek: literatuur/literatuurbibliotheek.md
   - FAQ: faq.md
   - Over ons: over-ons/index.md
+markdown_extensions:
+  - pymdownx.superfences
 theme:
   name: material
   palette:
