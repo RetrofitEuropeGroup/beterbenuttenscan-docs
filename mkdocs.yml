@@ -31,6 +31,7 @@ nav:
   - FAQ: faq.md
   - Over ons: over-ons/index.md
 markdown_extensions:
+  - md_in_html
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true

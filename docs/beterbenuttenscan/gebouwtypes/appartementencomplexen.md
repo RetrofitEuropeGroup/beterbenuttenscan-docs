@@ -8,14 +8,14 @@ Als we bijv. de [definitie opzoeken van objecttype Pand in de BAG](https://imbag
 > *Een pand moet ondeelbaar zijn en mag bij de totstandkoming niet kunnen worden opgedeeld in kleinere eenheden die elk afzonderlijk aan de definitie van een pand voldoen.*
 > 
 
-Dit zorgt ervoor dat een portiekflat volgens deze definitie wordt opgesplitst in meerdere BAG Pand objecten. De potentie van een optopproject is sterk afhankelijk van het aantal potentieel te realiseren woningen in een appartementencomplex. Daarom is het belangrijk dat de laag appartementencomplexen een betere representatie is van de werkelijkheid dan de losse BAG Pand objecten.
+Dit zorgt ervoor dat een portiekflat volgens deze definitie wordt opgesplitst in meerdere BAG Pand objecten, terwijl de potentie van een optopproject sterk afhankelijk is van het aantal potentieel te realiseren woningen op een appartementencomplex. Daarom is de keuze gemaakt om BAG Pand objecten te aggregreren met als doel om een betere representatie van de werkelijkheid te krijgen.
 
 De manier van aggregatie is:
 
 1. We selecteren eerst panden met een woonfunctie en groeperen de panden die vlak naast elkaar staan (binnen 2,5 meter) tot één aaneengesloten geheel. 
 2. Vervolgens bepalen we of deze groep een appartementencomplex is op basis van het aantal woningen: een losstaand gebouw moet meer dan drie woningen bevatten, en een groep van meerdere panden moet gemiddeld meer dan 1,2 woningen per pand hebben.
 
-<details>
+<details markdown="1">
 <summary>Toon SQL-query</summary>
 
 Wij gebruiken de volgende SQL query om de appartementencomplexen te selecteren:
@@ -73,14 +73,48 @@ where
 	(a.a_p > 1 and (a.a_vb_wf/a.a_p) > 1.2) 
     AND a.cid IS NOT NULL
 ```
-
 </details>
 
 ## Criteria
-
+Onderstaand de criteria die gebruikt worden om de potentie van een appartementencomplex te beoordelen. 
 ### Fundering
 De funderingsscore combineert het oorspronkelijk bouwjaar en de kwetsbaarheid van het bodemtype.  
-Gebouwen van vóór 1970 hebben een hoger risico (vaker fundering op staal of houten palen). Bodemtypes **klei** en **veen** verhogen het risico op funderingsrot of verzakking. Meer risico betekent een lagere score.
+Gebouwen van vóór 1970 hebben een hoger risico. Bodemtypes klei en veen verhogen het risico op funderingsrot of verzakking. Meer risico betekent een lagere score.
+
+gebruikte data: [BAG Pand](https://imbag.github.io/praktijkhandleiding/objecttypen/pand), [Indicatieve aandachtsgebieden funderingsproblematiek](https://service.pdok.nl/rvo/indicatieve-aandachtsgebieden-funderingsproblematiek/atom/index.xml)
+
+<details markdown="1">
+<summary>Technische uitleg</summary>
+
+
+1. Per complex (`complexid`) het gewogen gemiddelde van het oorspronkelijke bouwjaar berekend.
+2. De complexen worden verrijkt met funderings- en bodemdata (waaronder het bodemtype en het percentage overlap met dat bodemtype, `perc_fgr`). Binnen een complex wordt het record met het hoogste percentage per bodemtype behouden.
+4. Berekenen van de deelfactoren:
+   * Bodemscore:*
+     * Ligt het complex in een *'Kwetsbaar gebied'*? Dan krijgt het een score die lineair afneemt naarmate het percentage van het complex dat op deze kwetsbare bodem ligt (`perc_fgr`) groter is.
+     * Ligt het in een *'Niet kwetsbaar gebied'* of is de status *'onbekend - stedelijk gebied'*? Dan is de bodemscore standaard 1.
+   * Bouwjaarscore:
+     * Pandeigenschappen van vóór 1970 worden als risicovoller gezien en krijgen een score van 0.5. 
+     * Panden uit 1970 of later krijgen een score van 1.
+5. Eindscore berekenen: De uiteindelijke funderingsscore is de vermenigvuldiging van de bouwjaarscore en de bodemscore. Dit getal wordt afgerond op twee decimalen.
+
+### Wiskundige Notatie
+
+De uiteindelijke funderingsscore ($S_{fundering}$) wordt berekend door de bouwjaarscore ($S_{bouwjaar}$) te vermenigvuldigen met de bodemscore ($S_{bodem}$):
+
+$$S_{fundering} = \text{round}(S_{bouwjaar} \times S_{bodem}, 2)$$
+
+Hierbij wordt de **bouwjaarscore** als volgt bepaald aan de hand van het gewogen gemiddelde bouwjaar ($B$) van het complex:
+
+$$S_{bouwjaar} = \begin{cases} 0.5 & \text{als } B < 1970 \\ 1 & \text{als } B \ge 1970 \end{cases}$$
+
+De **bodemscore** hangt af van de bodemcategorie en het percentage van het complex dat binnen dat gebied valt ($P_{fgr}$):
+
+$$S_{bodem} = \begin{cases} 1 - 0.5 \times \left( \frac{P_{fgr}}{100} \right) & \text{als bodem} = \text{"Kwetsbaar gebied"} \\ 1 & \text{als bodem} \in \{ \text{"Niet kwetsbaar", "Onbekend - stedelijk"} \} \end{cases}$$
+
+</details>
+
+**Update:** we zijn in gesprek met [fundermaps](https://fundermaps.com/) om samen dit criteria te verbeteren.
 
 ### Gebouwtype
 
