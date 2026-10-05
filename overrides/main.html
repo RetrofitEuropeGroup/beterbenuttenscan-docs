@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ 'stylesheets/bzk.css' | url }}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ 'javascripts/mathjax.js' | url }}"></script>
+  {{ super() }}
+  <script src="{{ 'javascripts/mermaid.js' | url }}"></script>
+{% endblock %}
+
 {% block header %}
   <header class="md-header md-header--banner" data-md-component="header">
     {{ super() }}

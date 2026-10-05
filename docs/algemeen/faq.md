@@ -3,6 +3,40 @@
 Praktische veelgestelde vragen over de GBB-scan. Deze lijst wordt aangevuld
 en bijgewerkt op basis van vragen uit de praktijk.
 
+# Algemeen
+
+<details>
+  <summary>Wat is de beter benutten scan?</summary>
+  <p>De Beter Benutten Scan is een digitaal platform en analyse-instrument dat speciaal is ontwikkeld voor gemeenten om inzichtelijk te maken waar er potentie is om in de bestaande gebouwde omgeving extra woningen of woonruimte toe te voegen.</p>
+</details>
+
+<details>
+  <summary>Waarom is de beter benutten scan ontwikkeld?</summary>
+  <p>Nederland staat voor een enorme woningbouwopgave. Het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (BZK) willen gemeenten stimuleren om woningen toe te voegen door bestaande wijken te verdichten. De scan moet hierbij ondersteunen zodat gemeenten stappen kunnen maken.</p>
+</details>
+
+<details>
+  <summary>Voor wie is de beter benutten scan bedoeld?</summary>
+  <p>Gemeenten zijn de hoofdgebruikers van de Beter Benutten Scan. De scan is ontworpen als een interactieve 'praatplaat' die gemeenten helpt om het gesprek zowel intern als extern aan te gaan.</p>
+</details>
+
+## Gebruik
+
+<details>
+  <summary>Hoe vaak wordt de data geüpdatet?</summary>
+  <p>
+    Het doel is om de data één keer per kwartaal te actualiseren. De actualiteit staat per kaartlaag in het platform vermeld.
+  </p>
+</details>
+
+<details>
+  <summary>Kunnen externe marktpartijen toegang krijgen tot de scan?</summary>
+  <p>
+    Nee, nog niet. De tool bevat gegevens van het Kadaster en niet-openbare gegevens
+    van gemeenten. We onderzoeken momenteel hoe we het openstellen van de scan voor externe partijen kunnen faciliteren, bijvoorbeeld via een aparte omgeving met alleen openbare data.
+  </p>
+</details>
+
 ## Eigenaarschap
 
 <details>
@@ -38,24 +72,6 @@ en bijgewerkt op basis van vragen uit de praktijk.
     Bekijk in de filterlagen bij het gebouw of een VvE-naam staat. Als er geen
     naam is, is er geen VvE geregistreerd. Je kunt ook filteren op
     <strong>Overige verhuur is groter dan 0,5</strong>.
-  </p>
-</details>
-
-## Data
-
-<details>
-  <summary>Hoe vaak wordt de data geüpdatet?</summary>
-  <p>
-    Het doel is om de data één keer per kwartaal te actualiseren.
-  </p>
-</details>
-
-<details>
-  <summary>Kunnen externe marktpartijen toegang krijgen tot de tool?</summary>
-  <p>
-    Nee. De tool bevat gegevens van het Kadaster en niet-openbare gegevens
-    van gemeenten. Scenario's mogen wel via een screenview als praatplaat
-    worden gedeeld.
   </p>
 </details>
 

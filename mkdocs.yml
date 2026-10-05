@@ -3,8 +3,16 @@ site_url: https://retrofiteuropegroup.github.io/beterbenuttenscan-docs/
 repo_url: https://github.com/RetrofitEuropeGroup/beterbenuttenscan-docs
 repo_name: RetrofitEuropeGroup/beterbenuttenscan-docs
 nav:
-  - BeterBenuttenScan:
-      - beterbenuttenscan/index.md
+  - Algemeen:
+      - algemeen/index.md
+      - Introductie: algemeen/introductie.md
+      - PIM platform: algemeen/piminfo.md
+      - Ondersteuning: algemeen/ondersteuning.md
+  - Ambitie bepalen: ambitie-bepalen/index.md
+  - Ambitie vastleggen: ambitie-vastleggen/index.md
+  - Beleid uitvoeren: beleid-uitvoeren/index.md
+  - Voortgang monitoren: monitoren/index.md
+  - Technische documentatie:
       - Gebouwtypes:
           - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
           - Hoekwoningen: beterbenuttenscan/gebouwtypes/hoekwoningen.md
@@ -22,17 +30,13 @@ nav:
           - Street view: beterbenuttenscan/analyseren/street-view.md
       - Exporteren: beterbenuttenscan/exporteren.md
       - Voorbeeld user story: beterbenuttenscan/voorbeeld-user-story.md
-  - PIM platform:
-      - pim-info/index.md
-  - Workshops:
-      - workshops/ondersteuning.md
-  - Literatuur:
-      - Literatuurbibliotheek: literatuur/literatuurbibliotheek.md
-  - FAQ: faq.md
-  - Over ons: over-ons/index.md
 markdown_extensions:
   - md_in_html
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.arithmatex:
       generic: true
 plugins:
@@ -47,6 +51,7 @@ plugins:
       branch: main
 theme:
   name: material
+  language: nl
   palette:
     primary: 'custom'
     accent: 'red'
@@ -66,8 +71,7 @@ theme:
     - content.code.copy
     - content.code.expand
     - content.tabs.link
-extra_css:
-  - stylesheets/bzk.css
 extra_javascript:
-  - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/scan-button.js

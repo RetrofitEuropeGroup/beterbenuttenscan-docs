@@ -1,3 +1,25 @@
+# Intro
+
+## Wat is de Beter Benutten Scan?
+
+De Beter Benutten Scan is een digitaal platform en analyse-instrument dat speciaal is ontwikkeld voor gemeenten om inzichtelijk te maken waar er potentie is om in de bestaande gebouwde omgeving extra woningen of woonruimte toe te voegen. In plaats van het bouwen van compleet nieuwe woonwijken, helpt deze tool bij het "beter benutten" van wat er al is.
+
+De scan brengt de kansen en knelpunten voor verdichting op zowel gebieds- als gebouwniveau in kaart. Dit gebeurt aan de hand van een breed scala aan criteria verdeeld over vijf hoofdonderwerpen:
+
+* **Technisch:** Kan het fysiek gebouwd worden?
+
+* **Organisatorisch:** Hoe pak je het proces aan en wie is de eigenaar?
+
+* **Regelgeving:** Past het binnen bestaande wetgeving, vergunningen en beleid?
+
+* **Maatschappelijk:** Is het leefbaar en acceptabel voor de huidige bewoners in de wijk?
+
+* **Financieel:** Is het betaalbaar en is de businesscase haalbaar?
+
+# Achtergrondinformatie
+
+De tool is oorspronkelijk in 2023 gestart als 'OpToPo', een rekenmodel specifiek gericht op het optoppen (toevoegen van verdiepingen) van appartementencomplexen gebouwd vanaf 1965. Inmiddels is dit doorontwikkeld naar de Beter Benutten Scan 2.0, waarbij het platform uitgebreid is naar andere vormen van verdichting. Hierbij wordt onder andere gekeken naar het splitsen van woningen, aanplakken (aanbouwen tegen bestaande bouw), uitplinten (het transformeren van de begane grond), en het transformeren van garageboxen of commercieel vastgoed.
+
 # Betrokken partijen
 
 De **Beter Benutten Scan** is ontwikkeld door een combinatie van overheden,
@@ -8,7 +30,7 @@ ervaring of data in om de scan steeds beter bruikbaar te maken voor gemeenten.
 
 <article class="consortium-tegel">
   <div class="consortium-logo consortium-logo--placeholder" aria-label="Ruimte voor het logo van BZK">
-    <img src="assets/logo_rijksoverheid.png" alt="Logo rijksoverheid">
+    <img src="../assets/logo_rijksoverheid.png" alt="Logo rijksoverheid">
   </div>
   <div class="consortium-inhoud">
     <p class="consortium-type">Rijksoverheid</p>
@@ -20,7 +42,7 @@ ervaring of data in om de scan steeds beter bruikbaar te maken voor gemeenten.
 
 <article class="consortium-tegel">
   <div class="consortium-logo consortium-logo--placeholder" aria-label="Ruimte voor het logo van Hogeschool Utrecht">
-    <img src="assets/logo_hu.png" alt="Logo HU">
+    <img src="../assets/logo_hu.png" alt="Logo HU">
   </div>
   <div class="consortium-inhoud">
     <p class="consortium-type">Kennisinstelling</p>
@@ -32,7 +54,7 @@ ervaring of data in om de scan steeds beter bruikbaar te maken voor gemeenten.
 
 <article class="consortium-tegel">
   <div class="consortium-logo consortium-logo--placeholder" aria-label="Ruimte voor het logo van Circol">
-    <img src="assets/logo_circol.png" alt="Logo circol">
+    <img src="../assets/logo_circol.png" alt="Logo circol">
   </div>
   <div class="consortium-inhoud">
     <p class="consortium-type">Coöperatie</p>
@@ -44,7 +66,7 @@ ervaring of data in om de scan steeds beter bruikbaar te maken voor gemeenten.
 
 <article class="consortium-tegel">
   <div class="consortium-logo consortium-logo--placeholder" aria-label="Ruimte voor het logo van TNO">
-    <img src="assets/logo_tno.png" alt="Logo TNO">
+    <img src="../assets/logo_tno.png" alt="Logo TNO">
   </div>
   <div class="consortium-inhoud">
     <p class="consortium-type">Onderzoek en innovatie</p>
@@ -56,7 +78,7 @@ ervaring of data in om de scan steeds beter bruikbaar te maken voor gemeenten.
 
 <article class="consortium-tegel">
   <div class="consortium-logo consortium-logo--placeholder" aria-label="Ruimte voor de logo's van de koplopergemeenten">
-    Koplopers
+    <img src="../assets/logo_koplopers.png" alt="Logo koplopergemeenten">
   </div>
   <div class="consortium-inhoud">
     <p class="consortium-type">Gemeenten</p>
@@ -65,4 +87,3 @@ ervaring of data in om de scan steeds beter bruikbaar te maken voor gemeenten.
     <p class="consortium-gemeenten">Koplopers: Rotterdam · Den Haag · Utrecht · Eindhoven · Arnhem · Zwolle · Leeuwarden · Ede · Rheden</p>
   </div>
 </article>
-

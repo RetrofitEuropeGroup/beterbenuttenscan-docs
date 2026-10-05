@@ -28,6 +28,26 @@
   display: none;
 }
 
+.scan-link {
+  display: inline-flex;
+  align-items: center;
+  order: 0;
+  margin-right: 0.75rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 0.2rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.scan-link:hover {
+  background: #fff;
+  color: #164273;
+}
+
 .md-header__title,
 .md-tabs__link,
 .md-tabs__link--active {
@@ -263,6 +283,10 @@
 }
 
 @media screen and (max-width: 600px) {
+  .scan-link {
+    display: none;
+  }
+
   .experts-grid {
     grid-template-columns: 1fr;
   }
