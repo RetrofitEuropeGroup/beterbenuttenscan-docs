@@ -1,4 +1,4 @@
-# Intro
+Op deze pagina vind je een introductie van de Beter Benutten Scan, inclusief achtergrondinformatie en de betrokken partijen.
 
 ## Wat is de Beter Benutten Scan?
 
@@ -16,11 +16,11 @@ De scan brengt de kansen en knelpunten voor verdichting op zowel gebieds- als ge
 
 * **Financieel:** Is het betaalbaar en is de businesscase haalbaar?
 
-# Achtergrondinformatie
+## Achtergrondinformatie
 
 De tool is oorspronkelijk in 2023 gestart als 'OpToPo', een rekenmodel specifiek gericht op het optoppen (toevoegen van verdiepingen) van appartementencomplexen gebouwd vanaf 1965. Inmiddels is dit doorontwikkeld naar de Beter Benutten Scan 2.0, waarbij het platform uitgebreid is naar andere vormen van verdichting. Hierbij wordt onder andere gekeken naar het splitsen van woningen, aanplakken (aanbouwen tegen bestaande bouw), uitplinten (het transformeren van de begane grond), en het transformeren van garageboxen of commercieel vastgoed.
 
-# Betrokken partijen
+## Betrokken partijen
 
 De **Beter Benutten Scan** is ontwikkeld door een combinatie van overheden,
 kennisinstellingen en marktpartijen. Ieder brengt eigen kennis,

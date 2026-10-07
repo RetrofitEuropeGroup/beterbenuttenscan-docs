@@ -6,31 +6,26 @@ nav:
   - Algemeen:
       - algemeen/index.md
       - Introductie: algemeen/introductie.md
+      - Aanmelden: algemeen/aanmelden.md
       - PIM platform: algemeen/piminfo.md
       - Ondersteuning: algemeen/ondersteuning.md
-  - Ambitie bepalen: ambitie-bepalen/index.md
-  - Ambitie vastleggen: ambitie-vastleggen/index.md
-  - Beleid uitvoeren: beleid-uitvoeren/index.md
-  - Voortgang monitoren: monitoren/index.md
+  - Gebruikshandleiding:
+    - gebruikshandleiding/index.md
+    - 1. Ambitie bepalen: gebruikshandleiding/ambitie-bepalen.md
+    - 2. Ambitie vastleggen: gebruikshandleiding/ambitie-vastleggen.md
+    - 3. Beleid uitvoeren: gebruikshandleiding/beleid-uitvoeren.md
+    - 4. Monitoren: gebruikshandleiding/monitoren.md
   - Technische documentatie:
-      - Gebouwtypes:
-          - Appartementencomplexen: beterbenuttenscan/gebouwtypes/appartementencomplexen.md
-          - Hoekwoningen: beterbenuttenscan/gebouwtypes/hoekwoningen.md
-      - Filteren: beterbenuttenscan/filteren.md
-      - Wegen: beterbenuttenscan/wegen/index.md
-      - Analyseren:
-          - BeterBenuttenScan: beterbenuttenscan/analyseren/beterbenuttenscan.md
-          - Mobiliteit: beterbenuttenscan/analyseren/mobiliteit.md
-          - Voorzieningen: beterbenuttenscan/analyseren/voorzieningen.md
-          - Regelgeving: beterbenuttenscan/analyseren/regelgeving.md
-          - Verstedelijking: beterbenuttenscan/analyseren/verstedelijking.md
-          - Ondergrond: beterbenuttenscan/analyseren/ondergrond.md
-          - Eigendomsinformatie: beterbenuttenscan/analyseren/eigendomsinformatie.md
-          - Energietransitie: beterbenuttenscan/analyseren/energietransitie.md
-          - Street view: beterbenuttenscan/analyseren/street-view.md
-      - Exporteren: beterbenuttenscan/exporteren.md
-      - Voorbeeld user story: beterbenuttenscan/voorbeeld-user-story.md
+      - technische-documentatie/index.md
+      - Gebiedslagen: technische-documentatie/gebiedslagen.md
+      - Objectlagen:
+          - Appartementencomplexen: technische-documentatie/objectlagen/appartementencomplexen.md
+          - Hoekwoningen: technische-documentatie/objectlagen/hoekwoningen.md
+      - Analyselagen: technische-documentatie/analyselagen.md
+      - Functionaliteiten: technische-documentatie/functionaliteiten.md
+
 markdown_extensions:
+  - admonition
   - md_in_html
   - pymdownx.superfences:
       custom_fences:
@@ -63,7 +58,9 @@ theme:
     - navigation.indexes
     - navigation.tabs
     - navigation.tabs.sticky
+    - navigation.footer
     - navigation.prune
+    - navigation.tracking
     - navigation.top
     - search.highlight
     - search.suggest
