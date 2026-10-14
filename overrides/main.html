@@ -7,7 +7,7 @@
 
 {% block extrahead %}
   {{ super() }}
-  {% if page.file.src_uri == "index.md" %}
+  {% if page and page.file and page.file.src_uri == "index.md" %}
     <meta http-equiv="refresh" content="0; url={{ 'algemeen/' | url }}">
   {% endif %}
 {% endblock %}

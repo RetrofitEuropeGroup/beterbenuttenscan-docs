@@ -1,0 +1,375 @@
+:root {
+  --md-primary-fg-color: #164273;
+  --md-primary-fg-color--light: #164273;
+  --md-primary-fg-color--dark: #0f3056;
+  --md-accent-fg-color: #a90061;
+}
+
+.md-header,
+.md-tabs {
+  background: #164273;
+}
+
+.md-header .md-logo {
+  display: none;
+}
+
+.scan-link {
+  display: inline-flex;
+  align-items: center;
+  order: 0;
+  margin-right: 0.75rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 0.2rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.scan-link:hover {
+  background: #fff;
+  color: #164273;
+}
+
+.md-header__title,
+.md-tabs__link,
+.md-tabs__link--active {
+  color: #fff;
+}
+
+.md-content a {
+  color: #164273;
+}
+
+.md-content .md-button--primary {
+  background: #a90061;
+  border-color: #a90061;
+}
+
+.md-content .md-button--primary:hover {
+  background: #900052;
+  border-color: #900052;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.video-embed {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #d8dee4;
+  border-top: 5px solid #164273;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 12%);
+}
+
+.video-embed__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #eef2f5;
+}
+
+.video-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-card {
+  overflow: hidden;
+  border: 1px solid #d8dee4;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 12%);
+}
+
+.video-card .video-embed {
+  border: 0;
+  border-bottom: 1px solid #d8dee4;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.video-card__content {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.video-card__content h3 {
+  margin: 0 0 0.5rem;
+  color: #164273;
+  font-size: 1.05rem;
+}
+
+.video-card__content p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.image-center-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.image-center-wrapper img {
+  max-width: 100%;
+}
+
+.md-content details {
+  margin: 1rem 0;
+  border: 1px solid #d8dee4;
+  border-left: 4px solid #164273;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.md-content details summary {
+  cursor: pointer;
+  padding: 0.9rem 1rem;
+  color: #164273;
+  font-weight: 700;
+}
+
+.md-content details p {
+  margin: 0;
+  padding: 0 1rem 1rem;
+}
+
+.literatuur-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.literatuur-tegel {
+  border: 1px solid #d8dee4;
+  border-top: 5px solid #164273;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.literatuur-tegel h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.literatuur-tegel dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 0.75rem;
+  margin: 1rem 0;
+}
+
+.literatuur-tegel dt {
+  font-weight: 700;
+}
+
+.literatuur-tegel dd {
+  margin: 0;
+}
+
+.experts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.expert-kaart {
+  overflow: hidden;
+  border: 1px solid #d8dee4;
+  border-top: 4px solid #164273;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.expert-afbeelding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 1rem;
+  background: #f4f7fa;
+  border-bottom: 1px dashed #c7d0da;
+}
+
+.expert-afbeelding img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.expert-inhoud {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.expert-inhoud h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.expert-inhoud p:last-child {
+  margin-bottom: 0;
+}
+
+.workshop-voorbeelden-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.workshop-kaart {
+  overflow: hidden;
+  border: 1px solid #d8dee4;
+  border-top: 4px solid #164273;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.workshop-kaart > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px dashed #c7d0da;
+}
+
+.workshop-kaart-inhoud {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.workshop-kaart-inhoud h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.workshop-kaart-inhoud p:last-child {
+  margin-bottom: 0;
+}
+
+.consortium-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.consortium-tegel {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #d8dee4;
+  border-left: 5px solid #164273;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 8%);
+}
+
+.consortium-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 190px;
+  min-height: 145px;
+  padding: 1rem 1.25rem;
+  background: #f4f7fa;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.consortium-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 82px;
+  width: auto;
+  object-fit: contain;
+}
+
+.consortium-logo--placeholder {
+  border-right: 1px dashed #c7d0da;
+}
+
+.consortium-inhoud {
+  flex: 1;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.consortium-inhoud h2 {
+  margin-top: 0;
+  color: #164273;
+  font-size: 1.1rem;
+}
+
+.consortium-type {
+  margin: 0 0 0.35rem;
+  color: #666;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.consortium-gemeenten {
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 600px) {
+  .scan-link {
+    display: none;
+  }
+
+  .experts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workshop-voorbeelden-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .consortium-tegel {
+    flex-direction: column;
+    border-left: 1px solid #d8dee4;
+    border-top: 4px solid #164273;
+  }
+
+  .consortium-logo {
+    flex-basis: auto;
+    min-height: 100px;
+  }
+
+  .consortium-logo--placeholder {
+    border-right: 0;
+    border-bottom: 1px dashed #c7d0da;
+  }
+}
