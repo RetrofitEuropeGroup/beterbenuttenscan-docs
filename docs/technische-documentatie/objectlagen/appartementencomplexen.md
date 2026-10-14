@@ -98,7 +98,7 @@ gebruikte data: [BAG Pand](https://imbag.github.io/praktijkhandleiding/objecttyp
      * Panden uit 1970 of later krijgen een score van 1.
 5. Eindscore berekenen: De uiteindelijke funderingsscore is de vermenigvuldiging van de bouwjaarscore en de bodemscore. Dit getal wordt afgerond op twee decimalen.
 
-### Wiskundige Notatie
+**Wiskundige notatie**
 
 De uiteindelijke funderingsscore ($S_{fundering}$) wordt berekend door de bouwjaarscore ($S_{bouwjaar}$) te vermenigvuldigen met de bodemscore ($S_{bodem}$):
 
@@ -199,7 +199,7 @@ Een dakvlak wordt als plat beschouwd wanneer de hellingshoek kleiner is dan 10 g
 
 De uitkomsten zijn in QGIS verkend en handmatig gevalideerd, met extra aandacht voor complexen aan de grenzen van de selectie. De decision tree is vervolgens in FME uitgevoerd op basis van BAG3D LOD2.2.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 Voor ieder relevant dakvlak \(j\) binnen complex \(c\) wordt eerst het aandeel in het totale dakoppervlak bepaald:
 
@@ -252,7 +252,7 @@ De dakoppervlaktescore wordt als volgt geïnterpreteerd:
 2. Bij een dakoppervlakte groter dan 1.000 m² is de score 1.
 3. Bij een ontbrekende of onbekende dakoppervlakte is de score 0.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 De totale dakoppervlakte van complex \(c\) wordt berekend als de som van de relevante dakvlakken:
 
@@ -297,7 +297,7 @@ Het oppervlak buiten de voorspellingen wordt gebruikt als vrije dakoppervlakte. 
 
 Het attribuut `Vrij dak percentage` wordt afgerond op hele procentpunten en vervolgens weergegeven met twee decimalen. De `vrijdakoppervlakte_score` wordt berekend door dit percentage door 100 te delen.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 Voor ieder complex \(c\) definiëren we:
 
@@ -360,7 +360,7 @@ De beschikbare hoogte (`vrijehoogte`) wordt vervolgens berekend als het verschil
 
 De oppervlakte van geschikte en ongeschikte dakvlakken wordt per `complexid` opgeteld. De uiteindelijke score is het aandeel van het geschikte dakoppervlak in het totale beoordeelde dakoppervlak. Wanneer geen bestemmingsplan of maatvoering beschikbaar is, krijgt het dakvlak en daarmee het complex momenteel score 0.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 Voor ieder dakvlak \(i\) definiëren we:
 
@@ -438,7 +438,7 @@ De score wordt als volgt berekend:
 
 De grens van 30 meter is gekozen als indicatie voor de overgang naar hogere bebouwing, waarbij strengere bouwkundige en veiligheidskundige eisen kunnen gelden. De scoregewichten en grenswaarden kunnen in een volgende iteratie worden aangepast op basis van overleg met het optopteam.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 Voor ieder dakvlak \(i\) binnen complex \(c\) definiëren we:
 
@@ -504,7 +504,7 @@ De score wordt als volgt berekend:
 3. Bij meer dan 5.000 m² is de score 1.
 4. Bij ontbrekende vrije ruimte wordt de score 0.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 Voor ieder perceeldeel \(j\) dat bij complex \(c\) hoort, definiëren we \(A_{cj}\) als de oppervlakte buiten de buffer van 25 meter. De totale vrije ruimte van complex \(c\) is:
 
@@ -559,7 +559,7 @@ Naast het energielabel wordt een bouwjaarvangnet berekend. Daarvoor worden de oo
 
 In de eindoutput blijven alleen `energielabel_score`, `complexid` en `energielabel` over.
 
-### Wiskundige notatie
+**Wiskundige notatie**
 
 Voor complex \(c\) definiëren we:
 
