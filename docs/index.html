@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beter Benutten Scan — Portaal & Documentatie</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rijks: {
+              blauw: '#154273',
+              donker: '#0e2d4f',
+              hemel: '#007bc7',
+              lichtblauw: '#e1eff7',
+              grijs: '#f4f6f8',
+              rand: '#d2d7df',
+            }
+          },
+          fontFamily: {
+            sans: [
+              '"Source Sans 3"',
+              'sans-serif'
+            ],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<!-- Scrollbaar op alle zoomniveaus -->
+<body class="bg-rijks-grijs text-slate-900 font-sans antialiased">
+
+  <main class="max-w-5xl w-full mx-auto px-6 pb-8 pt-0">
+
+    <!-- 1. TOP-GEDEELTE: LOGO'S & GROTE TITEL MET INTRODUCTIE -->
+    <div class="shrink-0">
+
+      <!-- Logo's: Rijksoverheid lint hangend vanaf de bovenrand + HU logo rechts -->
+      <div class="flex items-start justify-between mb-4">
+        <img
+          src="assets/logo_rijksoverheid.png"
+          alt="Rijksoverheid"
+          class="h-16 sm:h-20 w-auto object-contain object-top"
+        >
+        <div class="pt-4">
+          <img
+            src="assets/logo_hu.png"
+            alt="Hogeschool Utrecht"
+            class="h-9 sm:h-11 w-auto object-contain"
+          >
+        </div>
+      </div>
+
+      <!-- Grote Titel & Introductie-alinea -->
+      <div class="mb-6">
+        <h1 class="text-4xl lg:text-5xl font-bold text-rijks-blauw tracking-tight leading-none mb-3">
+          Beter Benutten Scan
+        </h1>
+        <p class="text-base lg:text-lg text-slate-700 leading-relaxed max-w-4xl">
+          Welkom bij de documentatie van de Beter Benutten Scan (BBS). De BBS is een digitaal analyse-instrument welke is ontwikkeld voor gemeenten om ambities voor beter benutten te bepalen, deze vast te leggen in beleid en vervolgens de uitvoering hiervan te ondersteunen. Ben je nog niet bekend met de Beter Benutten Scan? Bekijk dan eerst de <a href="algemeen/introductie" class="text-rijks-blauw underline hover:no-underline">introductie</a> pagina van de documentatie.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 2. BREDE HOOFDTEGEL: PLATFORM + DOCUMENTATIE KNOP ERONDER -->
+    <section class="bg-white border border-rijks-rand border-t-4 border-t-rijks-blauw shadow-sm grid md:grid-cols-12 overflow-hidden mb-6">
+
+      <!-- Linkerzijde (5 kolommen): achtergrond + los logo -->
+      <div class="md:col-span-5 bg-slate-100 border-b md:border-b-0 md:border-r border-rijks-rand relative min-h-[200px] overflow-hidden">
+        <img
+          src="assets/piminfo_thumbnail.png"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover object-top"
+          aria-hidden="true"
+        >
+        <div class="absolute inset-0 flex items-center justify-center p-5 sm:p-6">
+          <img
+            src="assets/logo_piminfo.png"
+            alt="Hogeschool Utrecht"
+            class="w-full max-w-[260px] sm:max-w-[300px] h-auto object-contain"
+          >
+        </div>
+      </div>
+
+      <!-- Rechterzijde (7 kolommen): Tekst + Gemeentelogin / Externen + Documentatie eronder -->
+      <div class="md:col-span-7 p-6 lg:p-7 flex flex-col justify-between">
+        <div class="mb-5">
+          <h2 class="text-2xl font-bold text-rijks-blauw mb-1.5">
+            Naar de scan &amp; documentatie
+          </h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Gebruik de scan via het PIM platform om verdichtingspotentie op pand- en gebiedsniveau te analyseren, of raadpleeg de documentatie voor de handleiding en achterliggende rekenregels.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Rij 1: Gemeentelogin & Externen naast elkaar -->
+          <div class="grid sm:grid-cols-2 gap-3">
+
+            <!-- Knop 1A: Gemeentelogin (Actief) -->
+            <a href="https://pimplatform.nl" target="_blank" rel="noopener"
+               class="bg-rijks-blauw hover:bg-rijks-donker text-white px-4 py-3.5 transition-colors flex flex-col justify-between group">
+              <div class="flex items-center justify-between gap-2 mb-0.5">
+                <span class="font-bold text-sm">Login voor gemeenten</span>
+                <span class="text-base font-bold group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+              </div>
+            </a>
+
+            <!-- Knop 1B: Externen (Grijs / Disabled) -->
+            <div class="bg-slate-100 border border-slate-200 text-slate-400 px-4 py-3.5 flex flex-col justify-between cursor-not-allowed select-none" aria-disabled="true">
+              <div class="flex items-center justify-between gap-2 mb-0.5">
+                <span class="font-bold text-sm text-slate-500">Openbare omgeving</span>
+                <span class="bg-slate-200 text-slate-600 text-[10px] font-bold px-1.5 py-0.5 uppercase tracking-wide">
+                  Binnenkort
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Rij 2: Ga naar documentatie direct daaronder over de volle breedte -->
+          <a href="algemeen/"
+             class="w-full bg-rijks-hemel hover:bg-rijks-blauw text-white px-4 py-3.5 transition-colors flex items-center justify-between group">
+            <div>
+              <span class="font-bold text-sm block">Ga naar documentatie</span>
+            </div>
+            <span class="text-base font-bold group-hover:translate-x-1 transition-transform ml-4" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="mb-3">
+      <h3 class="text-sm font-bold uppercase tracking-wide text-rijks-blauw">Ontdek meer in thema beter benutten:</h3>
+    </div>
+
+    <!-- 3. ONDERSTE STROOK: OVERIGE LINKS (VOORBEELDEN OP DE KAART) -->
+    <section class="bg-white border border-rijks-rand shadow-sm">
+      <div class="divide-y divide-rijks-rand">
+        <a href="https://voorbeeldenopdekaart.nl" target="_blank" rel="noopener"
+           class="group flex items-center justify-between gap-4 p-4 hover:bg-slate-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <!-- Thumbnail: voorbeeldenopdekaart_thumbnail.png -->
+            <div class="w-52 aspect-video bg-slate-100 border border-rijks-rand shrink-0 overflow-hidden">
+              <img
+                src="assets/voorbeeldenopdekaart_thumbnail.png"
+                alt="Voorbeelden op de Kaart"
+                class="w-full h-full object-cover object-center block"
+              >
+            </div>
+            <div>
+              <h3 class="font-bold text-rijks-blauw text-base">Ontdek voorbeeldprojecten</h3>
+              <p class="text-sm text-slate-600">Bekijk gerealiseerde projecten of deel zelf een project via voorbeeldenopdekaart.nl.</p>
+            </div>
+          </div>
+          <span class="text-2xl text-rijks-blauw group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a href="https://www.volkshuisvestingnederland.nl/onderwerpen/aanpak-woningnood/beter-benutten-van-bestaande-bebouwing" target="_blank" rel="noopener"
+           class="group flex items-center justify-between gap-4 p-4 hover:bg-slate-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <!-- Thumbnail: gbb_thumbnail.png -->
+            <div class="w-52 aspect-video bg-slate-100 border border-rijks-rand shrink-0 overflow-hidden">
+              <img
+                src="assets/gbb_thumbnail.png"
+                alt="Programma Beter Benutten Bestaande Bebouwing"
+                class="w-full h-full object-cover object-center block"
+              >
+            </div>
+            <div>
+              <h3 class="font-bold text-rijks-blauw text-base">Rijksprogramma Beter Benutten Bestaande Bebouwing</h3>
+              <p class="text-sm text-slate-600">Lees meer over de landelijke aanpak en doelstellingen van het GBB-programma.</p>
+            </div>
+          </div>
+          <span class="text-2xl text-rijks-blauw group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
