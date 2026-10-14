@@ -5,13 +5,6 @@
   <link rel="stylesheet" href="{{ 'stylesheets/bzk.css' | url }}">
 {% endblock %}
 
-{% block extrahead %}
-  {{ super() }}
-  {% if page and page.file and page.file.src_uri == "index.md" %}
-    <meta http-equiv="refresh" content="0; url={{ 'algemeen/' | url }}">
-  {% endif %}
-{% endblock %}
-
 {% block scripts %}
   <script src="{{ 'javascripts/mathjax.js' | url }}"></script>
   {{ super() }}

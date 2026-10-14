@@ -1,10 +1,9 @@
-site_name: Beter Benutten Scan documentatie
-site_url: https://verdichtingswijzer.nl
+site_name: Beter Benutten Scan
+site_url: https://verdichtingswijzer.nl/beterbenuttenscan-docs/
 repo_url: https://github.com/RetrofitEuropeGroup/beterbenuttenscan-docs
 repo_name: RetrofitEuropeGroup/beterbenuttenscan-docs
 nav:
   - Algemeen:
-      - algemeen/index.md
       - Introductie: algemeen/introductie.md
       - Aanmelden: algemeen/aanmelden.md
       - PIM platform: algemeen/piminfo.md
