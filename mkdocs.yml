@@ -1,5 +1,5 @@
 site_name: Beter Benutten Scan documentatie
-site_url: https://retrofiteuropegroup.github.io/beterbenuttenscan-docs/
+site_url: https://verdichtingswijzer.nl
 repo_url: https://github.com/RetrofitEuropeGroup/beterbenuttenscan-docs
 repo_name: RetrofitEuropeGroup/beterbenuttenscan-docs
 nav:
@@ -36,6 +36,7 @@ markdown_extensions:
       generic: true
 plugins:
   - search
+  - glightbox
   - git-revision-date-localized:
       type: datetime
       locale: nl
