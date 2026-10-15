@@ -113,6 +113,24 @@ en bijgewerkt op basis van vragen uit de praktijk.
   </p>
 </details>
 
+## Toegang en beveiliging
+
+<details>
+  <summary>De site wordt geblokkeerd door Microsoft Defender SmartScreen. Wat nu?</summary>
+  <p>
+    SmartScreen blokkeert soms (nieuwe) websites op basis van reputatie. Dit
+    is een vals alarm; de site is veilig. Een gebruiker kan:
+  </p>
+  <ul>
+    <li>op de waarschuwingspagina kiezen voor "Meer info" en daarna "Toch doorgaan";</li>
+    <li>de site als vals positief melden via
+      <a href="https://www.microsoft.com/wdsi/support/report-unsafe-site-guest">Microsoft Report an unsafe site</a>
+      (kies "Dit is geen onveilige site");</li>
+    <li>bij een beheerde werkomgeving de IT-afdeling vragen de URL toe te voegen aan de
+      toegestane sites (Microsoft Defender-portaal, Indicators &gt; URL/domeinen &gt; Toestaan).</li>
+  </ul>
+</details>
+
 ## Over de handleiding
 
 De handleiding wordt aangevuld met informatie over:
