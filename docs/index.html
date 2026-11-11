@@ -34,6 +34,90 @@
       }
     }
   </script>
+
+  <!-- Leaflet CSS & JS voor interactieve gemeentekaart -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    /* Leaflet styling in Rijkshuisstijl */
+    .leaflet-container {
+      background: #ffffff;
+      font-family: "Source Sans 3", sans-serif;
+    }
+    .leaflet-bar a {
+      background-color: #ffffff !important;
+      color: #154273 !important;
+      border-color: #d2d7df !important;
+      border-radius: 0 !important;
+    }
+    .leaflet-bar a:hover {
+      background-color: #f4f6f8 !important;
+      color: #0e2d4f !important;
+    }
+    /* Verwijder de browser focus bounding-box / rechthoekige omlijning op geklikte gemeenten */
+    .leaflet-container svg:focus,
+    .leaflet-container path:focus,
+    .leaflet-container *:focus,
+    .leaflet-interactive:focus,
+    path.leaflet-interactive:focus,
+    svg.leaflet-zoom-animated path:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    path.leaflet-interactive {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .municipality-tooltip {
+      background: #ffffff !important;
+      border: 1px solid #154273 !important;
+      border-radius: 0 !important;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+      padding: 6px 10px !important;
+      font-family: "Source Sans 3", sans-serif !important;
+      color: #0f172a !important;
+      pointer-events: none !important;
+    }
+    .municipality-tooltip::before {
+      border-top-color: #154273 !important;
+    }
+    .leaflet-popup-content-wrapper {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      border-radius: 0 !important;
+      border: 1px solid #154273 !important;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
+      padding: 0 !important;
+    }
+    .leaflet-popup-content {
+      margin: 12px 14px !important;
+      line-height: 1.5 !important;
+      font-size: 13px !important;
+      font-family: "Source Sans 3", sans-serif !important;
+      color: #1e293b !important;
+      min-width: 220px !important;
+      max-width: 280px !important;
+    }
+    .leaflet-popup-tip {
+      background: #ffffff !important;
+    }
+    .leaflet-container a.leaflet-popup-close-button {
+      top: 10px !important;
+      right: 12px !important;
+      color: #64748b !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      line-height: 1 !important;
+      width: 20px !important;
+      height: 20px !important;
+      text-align: center !important;
+      text-decoration: none !important;
+    }
+    .leaflet-container a.leaflet-popup-close-button:hover {
+      color: #0f172a !important;
+    }
+  </style>
 </head>
 
 <!-- Scrollbaar op alle zoomniveaus -->
@@ -73,7 +157,7 @@
     </div>
 
     <!-- 2. BREDE HOOFDTEGEL: PLATFORM + DOCUMENTATIE KNOP ERONDER -->
-    <section class="bg-white border border-rijks-rand border-t-4 border-t-rijks-blauw shadow-sm grid md:grid-cols-12 overflow-hidden mb-6">
+    <section class="bg-white border border-rijks-rand border-t-4 border-t-rijks-blauw shadow-sm grid md:grid-cols-12 overflow-hidden mb-0">
 
       <!-- Linkerzijde (5 kolommen): achtergrond + los logo -->
       <div class="md:col-span-5 bg-slate-100 border-b md:border-b-0 md:border-r border-rijks-rand relative min-h-[200px] overflow-hidden">
@@ -141,6 +225,80 @@
       </div>
     </section>
 
+    <!-- 2.5 SMALLE UITKLAPSTROOK VERBONDEN MET DE HOOFDTEGEL -->
+    <div class="mb-6">
+      <!-- Smalle strook verbonden met de tegel erboven (border-t-0) -->
+      <button
+        id="toggle-map-btn"
+        type="button"
+        class="w-full bg-slate-50 hover:bg-slate-100 border border-t-0 border-rijks-rand text-rijks-blauw hover:text-rijks-donker py-2.5 px-4 flex items-center justify-center gap-2 cursor-pointer transition-colors group select-none font-bold text-sm shadow-xs"
+        aria-expanded="false"
+        aria-controls="map-collapsible-content"
+      >
+        <span id="toggle-map-text">Check hier of jouw gemeente al deelneemt</span>
+        <svg id="toggle-map-icon" class="w-4 h-4 text-rijks-blauw transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Uitklapbare inhoud: Puur de kaart + zoekbalk (zonder dubbele info of drukke zijpanelen) -->
+      <div id="map-collapsible-content" class="hidden bg-white border border-t-0 border-rijks-rand p-4 sm:p-5 shadow-sm">
+        
+        <!-- Zoekbalk bovenaan de kaart -->
+        <div class="relative mb-3">
+          <div class="relative">
+            <input
+              type="text"
+              id="municipality-search"
+              placeholder="Zoek een gemeente (bijv. Utrecht, Almere, Rotterdam)..."
+              class="w-full pl-10 pr-8 py-2 text-sm border border-rijks-rand focus:outline-none focus:border-rijks-blauw focus:ring-1 focus:ring-rijks-blauw bg-slate-50 transition-colors"
+              autocomplete="off"
+            >
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <button
+              id="clear-search-btn"
+              type="button"
+              class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-sm font-bold p-1"
+              title="Zoekopdracht wissen"
+            >&times;</button>
+          </div>
+          <!-- Dropdown suggesties -->
+          <div
+            id="search-results-dropdown"
+            class="hidden absolute z-30 left-0 right-0 top-full mt-1 bg-white border border-rijks-rand shadow-lg max-h-56 overflow-y-auto divide-y divide-slate-100"
+          ></div>
+        </div>
+
+        <!-- Kaart over de volle breedte -->
+        <div class="w-full bg-white border border-rijks-rand relative h-[480px] md:h-[540px] overflow-hidden">
+          <div id="nl-map" class="w-full h-full z-10 bg-white"></div>
+
+          <!-- Loading indicator -->
+          <div id="map-loading" class="absolute inset-0 z-30 bg-white/90 flex flex-col items-center justify-center p-6 text-center">
+            <div class="w-7 h-7 border-2 border-rijks-blauw border-t-transparent rounded-full animate-spin mb-2"></div>
+            <span class="text-xs font-semibold text-rijks-blauw">Gemeentekaart laden...</span>
+          </div>
+        </div>
+
+        <!-- Rustige compacte legenda onder de kaart -->
+        <div class="mt-3 pt-2.5 border-t border-rijks-rand flex flex-wrap items-center justify-between text-xs text-slate-600 gap-2">
+          <div class="flex items-center gap-3.5 flex-wrap">
+            <span class="font-bold text-slate-700">Legenda:</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 bg-[#154273] inline-block border border-[#0e2d4f]"></span> Koploper</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 bg-[#007bc7] inline-block border border-[#005e99]"></span> Snelle volger</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 bg-[#008873] inline-block border border-[#006354]"></span> Vrije volger</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 bg-[#e2e8f0] inline-block border border-[#cbd5e1]"></span> Nog niet aangesloten</span>
+          </div>
+          <div class="text-[11px] text-slate-400">
+            Basis: CBS / PDOK Gemeentegrenzen (exclusief water)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="mb-3">
       <h3 class="text-sm font-bold uppercase tracking-wide text-rijks-blauw">Ontdek meer in thema beter benutten:</h3>
     </div>
@@ -194,5 +352,11 @@
       </p>
     </div>
   </main>
+
+  <!-- Data (PDOK Bestuurlijke Gebieden Kadaster & Deelnemers) -->
+  <script src="assets/data/pdok_bestuurlijke_gebieden.js"></script>
+  <script src="assets/data/deelnemers.js"></script>
+  <!-- Gemeenten Kaart Script -->
+  <script src="assets/js/gemeenten-kaart.js"></script>
 </body>
 </html>
